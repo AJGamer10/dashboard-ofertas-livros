@@ -53,7 +53,7 @@ def livro_mais_caro(livros: list):
             titulo_mais_caro = livro["titulo"]
             preco_mais_caro = preco
 
-    return titulo_mais_caro, preco_mais_caro
+    return titulo_mais_caro, "£"+str(preco_mais_caro)
 
 def _limpa_preco(preco_original: str):
     preco_original_limpo: str = preco_original.replace("£", "")
