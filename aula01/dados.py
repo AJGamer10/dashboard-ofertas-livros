@@ -31,9 +31,7 @@ def ler_livros():
 def calcular_preco_medio(livros: list):
     soma: float = 0
     for livro in livros:
-        preco_original: str = livro["preco"]
-        preco_original_limpo: str = preco_original.replace("£", "")
-        preco_num = float(preco_original_limpo)
+        preco_num = _limpa_preco(livro["preco"])
         soma += preco_num
     return soma/len(livros)
 
@@ -44,7 +42,23 @@ def contar_cinco_estrelas(livros: list):
         if nota_limpa == "five":
             contador += 1
     return contador
- 
+
+def livro_mais_caro(livros: list):
+    titulo_mais_caro: str = ""
+    preco_mais_caro: float = 0.0
+
+    for livro in livros:
+        preco = _limpa_preco(livro["preco"])
+        if preco_mais_caro < preco:
+            titulo_mais_caro = livro["titulo"]
+            preco_mais_caro = preco
+
+    return titulo_mais_caro, preco_mais_caro
+
+def _limpa_preco(preco_original: str):
+    preco_original_limpo: str = preco_original.replace("£", "")
+    return float(preco_original_limpo)
+
 if __name__ == "__main__":
     livros = ler_livros()
     # print(f"A quantidade de livros da coleção é de {len(livros)} livros.")
