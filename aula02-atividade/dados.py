@@ -92,6 +92,7 @@ def preparar_livros(linhas):
 def carregar_livros():
     """Lê o CSV e já devolve os livros prontos para usar."""
     return preparar_livros(ler_livros())
+    
 
 
 if __name__ == "__main__":
